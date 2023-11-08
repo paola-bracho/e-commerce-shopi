@@ -1,8 +1,11 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ItemCount } from "./ItemCount"
+import { CartContext } from "../context/CartContext";
 
 export const ItemDetail = ( {item} ) => {
 
+  const { cart, addToCart } = useContext(CartContext);
+  console.log(cart)
   const [count, setCount] = useState(1);
 
   const handleSubtract = () => {
@@ -12,10 +15,6 @@ export const ItemDetail = ( {item} ) => {
   const handleAdd = () => {
       count < item.stock && setCount(count + 1)
   }
-
-  const handleAddToCart = () => {
-      console.log( {...item, count} )
-}
 
   return (
     <div className="flex flex-row m-20 justify-center">
@@ -27,7 +26,12 @@ export const ItemDetail = ( {item} ) => {
             <p className="text-3xl my-4">{item.title}</p>
             <p className="text-base">{item.description}</p>
             <p className="text-2xl my-4">{item.price} $</p>
-            <ItemCount count={count} handleAdd={handleAdd} handleSubtract={handleSubtract} handleAddToCart={handleAddToCart} />
+            <ItemCount 
+            count={count} 
+            handleAdd={handleAdd} 
+            handleSubtract={handleSubtract} 
+            handleAddToCart={() => {addToCart(item, count)}} 
+            />
           </div>
     </div>
   )

@@ -15,9 +15,7 @@ export const Navbar = () => {
             </ul>
 
             <ul className="flex items-center gap-10 text-gray-200">
-            <li><Link to="#" className="">My order</Link></li>
-            <li><Link to="#" className="">My acount</Link></li>
-            <li><Link to="#" className=""></Link>Sign In</li>
+            <li><Link to="/SignIn" className="">Sign In</Link></li>
             <li><Link to="#" className=""><CartWidget /></Link></li>
             </ul>
         </nav>
