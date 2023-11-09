@@ -1,5 +1,6 @@
 import { useContext } from "react"
 import { CartContext } from "../context/CartContext"
+import { Link } from "react-router-dom"
 
 export const Cart = () => {
 
@@ -30,8 +31,9 @@ export const Cart = () => {
         { cart.length > 0 ?
             <>
                 <h2 className="font-semibold text-xl text-center mb-10">Total purchase: {totalPrice()}$</h2> 
-                <div className="flex justify-center">
-                    <button className="bg-gray-800 text-white w-32 h-auto rounded-xl p-2 text-sm" onClick={handleEmpty}>Empty Cart</button>
+                <div className="flex justify-center mb-20">
+                    <button className="bg-gray-800 text-white w-64 h-12 rounded-xl p-2 text-base mr-16 font-medium" onClick={handleEmpty}>Empty Cart</button>
+                    <Link to="/checkout" className="bg-gray-800 text-white w-64 h-12 rounded-xl p-2 text-base text-center pt-3 font-medium">Finalize the purchase</Link>
                 </div>
             </> :
                 <div className="flex items-center justify-center mt-28">
