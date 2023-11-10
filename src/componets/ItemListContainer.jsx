@@ -1,4 +1,3 @@
-import { pedirDatos } from "../helpers/pedirDatos";
 import { useEffect, useState } from "react";
 import { ItemList } from "./ItemList";
 import { useParams } from "react-router-dom";
@@ -16,7 +15,7 @@ export const ItemListContainer = () => {
 
         const productsRef = collection(db, "products");
 
-        const q = category ? query(productsRef, where("category", "==", category)) : productsRef;
+        const q = category ? query(productsRef, where("category", "==", category,)) : productsRef;
 
         getDocs(q)
             .then((resp) => {
